@@ -12,10 +12,141 @@
   <style>
     .attribution { font-size: 11px; text-align: center; }
     .attribution a { color: hsl(228, 45%, 44%); }
+
+    *, *::before, *::after{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+  --stripe-width: 40px; /* Stripe width in exact pixels */
+  --gap: 40px; /* Gap width */
+  --total-width: calc(var(--stripe-width) + var(--gap)); /* Ensures even division */
+  --padding: 5vw; /* Equal padding */
+}
+
+    body{
+      background-color: #141414;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+    }
+
+    
+    .inner-grid {
+  width: 90vw; 
+  max-width: 1200px;
+  height: 100vh;
+  padding-left: var(--padding);
+  padding-right: var(--padding);
+  box-sizing: border-box;
+
+  background-image: repeating-linear-gradient(
+    to right,
+    rgba(107, 107, 107, 0.13) 0px,
+    rgba(107, 107, 107, 0.13) var(--stripe-width),
+    transparent var(--stripe-width),
+    transparent var(--total-width)
+  );
+
+  background-size: var(--total-width) 100%;
+  background-position: 0 center; /* Align perfectly */
+  background-repeat: repeat;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  /* Prevent browser rendering glitches */
+  will-change: transform;
+  transform: translateZ(0);
+  image-rendering: crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+}
+
+.card-box{
+  width: 350px;
+  background-color: #33333358;
+  height: fit-content;
+  padding: 2.5rem;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+}
+
+.card-boxlogo{
+  width: 65px;
+  
+}
+
+.card-boxlogo .img-jess{
+  max-width: 100%;
+  border-radius: 50%;
+}
+
+.link-box{
+  width: 100%;
+}
+
+.link-box__ul{
+  list-style-type: none;
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 0.5rem;
+}
+
+.link-box__li{
+
+  background-color: rgba(110, 109, 109, 0.26);
+  color: white;
+  text-align: center;
+  padding: 1.2rem;
+  border-radius: 8px;
+
+ 
+}
+
+.link-box__li:hover{
+  background-color: #c4f82a;
+  cursor: url('./black-hand.png'), auto;
+}
   </style>
 </head>
 <body>
 
+    <div class="inner-grid">
+
+      <div class="card-box">
+        <div class="card-boxlogo">
+          <img class="img-jess" src="./assets/images/avatar-jessica.jpeg" alt="">
+        </div>
+
+        <div class="para-jess">
+          <h2 class="para-jess__h2">Jessica Randall</h2>
+          <p style="color: #c4f82a; margin-top: 0.6rem" class="para-jess__p">London, United Kingdom</p>
+        </div>
+
+        <p style="color: white">&#x201C Front-end developer and avid reader.&#x201D</p>
+
+        <div class="link-box">
+          <ul class="link-box__ul">
+            <li class="link-box__li">GitHub</li>
+            <li class="link-box__li">Frontend Mentor</li>
+            <li class="link-box__li">LinkedIn</li>
+            <li class="link-box__li">Twitter</li>
+            <li class="link-box__li">Instagram</li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
   
 </body>
 </html>
